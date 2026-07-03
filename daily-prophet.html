@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Daily Prophet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --parchment: #d9c9a3;
+    --parchment2: #cbb98a;
+    --parchment3: #c4ae7d;
+    --ink: #0f0c06;
+    --ink-muted: #2e2510;
+    --ink-faint: #4a3d22;
+    --red: #6b1212;
+  }
+
+  html { background: #1a1208; }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'IM Fell English', Georgia, serif;
+    min-height: 100vh;
+    /* aged paper — uneven yellowing */
+    background-image:
+      radial-gradient(ellipse at 0% 0%, rgba(80,50,0,.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(60,35,0,.22) 0%, transparent 50%),
+      radial-gradient(ellipse at 60% 40%, rgba(200,170,90,.08) 0%, transparent 40%);
+  }
+
+  /* grain texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.09'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: multiply;
+  }
+
+  .page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 44px 60px;
+    position: relative;
+    z-index: 1;
+    border-left: 1px solid var(--parchment3);
+    border-right: 1px solid var(--parchment3);
+    min-height: 100vh;
+    background: inherit;
+  }
+
+  /* ── Back link ── */
+  .back-link {
+    display: inline-block;
+    font-family: 'IM Fell English', serif;
+    font-size: .72rem;
+    font-style: italic;
+    color: var(--ink-faint);
+    text-decoration: none;
+    letter-spacing: .04em;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--parchment3);
+    padding-bottom: 10px;
+    display: block;
+  }
+  .back-link:hover { color: var(--ink); }
+
+  /* ── Masthead ── */
+  .masthead {
+    border-top: 4px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    text-align: center;
+    padding: 8px 0 6px;
+  }
+  .masthead-top {
+    font-size: .58rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+  }
+  .masthead-title {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(3rem, 9vw, 5.5rem);
+    line-height: .95;
+    color: var(--ink);
+  }
+  .masthead-rule {
+    height: 3px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    margin: 5px 0 3px;
+  }
+  .masthead-bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: .6rem;
+    letter-spacing: .06em;
+    color: var(--ink-faint);
+    font-style: italic;
+    padding: 2px 0;
+  }
+
+  /* ── Dateline ── */
+  .dateline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .6rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding: 5px 0 6px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 0;
+  }
+
+  /* ── Headline block ── */
+  .headline-block {
+    text-align: center;
+    padding: 12px 24px 10px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .hl-kicker {
+    font-size: .58rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+  .hl-main {
+    font-family: 'IM Fell English SC', serif;
+    font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .hl-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--ink);
+    margin: 8px auto;
+  }
+  .hl-deck {
+    font-size: .84rem;
+    font-style: italic;
+    color: var(--ink-faint);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* ── Columns ── */
+  .columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+    border-bottom: 2px solid var(--ink);
+  }
+  .col {
+    padding: 14px 16px;
+    border-right: 1px solid var(--ink);
+  }
+  .col:last-child { border-right: none; }
+
+  /* ── Article ── */
+  .article-body {
+    font-size: .8rem;
+    line-height: 1.72;
+    color: var(--ink-muted);
+    text-align: justify;
+    hyphens: auto;
+  }
+  .article-body + .article-body { margin-top: 10px; }
+
+  .drop-cap::first-letter {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: 3.8rem;
+    float: left;
+    line-height: .72;
+    padding-right: 5px;
+    padding-top: 6px;
+    color: var(--ink);
+  }
+
+  /* ── Pull quote ── */
+  .pull-quote {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 8px 10px;
+    margin: 12px 0;
+    font-family: 'IM Fell English SC', serif;
+    font-size: .82rem;
+    line-height: 1.45;
+    text-align: center;
+    color: var(--ink);
+  }
+
+  /* ── Photo frames ── */
+  .photo-frame {
+    position: relative;
+    background: #b8a57a;
+    border: 1px solid var(--ink-muted);
+    padding: 4px;
+    margin: 12px 0;
+    box-shadow: 1px 2px 4px rgba(0,0,0,.3), inset 0 0 0 1px rgba(0,0,0,.08);
+  }
+  .photo-frame img {
+    width: 100%;
+    display: block;
+    filter: sepia(50%) grayscale(30%) contrast(1.1) brightness(.95);
+    animation: flicker 10s ease-in-out infinite;
+  }
+  @keyframes flicker {
+    0%,100% { filter: sepia(50%) grayscale(30%) contrast(1.1) brightness(.95); }
+    48%      { filter: sepia(45%) grayscale(35%) contrast(1.12) brightness(.97); }
+    50%      { filter: sepia(55%) grayscale(25%) contrast(1.08) brightness(.93); }
+    52%      { filter: sepia(48%) grayscale(32%) contrast(1.11) brightness(.96); }
+  }
+  .photo-caption {
+    font-size: .58rem;
+    font-style: italic;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-top: 5px;
+    letter-spacing: .02em;
+    line-height: 1.4;
+  }
+
+  /* ── Photo placeholder ── */
+  .photo-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--parchment3);
+    border: 1px solid var(--ink-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--ink-faint);
+    font-size: .68rem;
+    font-style: italic;
+    letter-spacing: .04em;
+    opacity: .7;
+  }
+  .photo-placeholder .ph-label { font-size: .6rem; }
+
+  /* ── Photo grid ── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  /* ── Sidebar boxes ── */
+  .sidebar-box {
+    border: 1px solid var(--ink);
+    padding: 10px 12px;
+    margin-bottom: 12px;
+  }
+  .sidebar-title {
+    font-family: 'IM Fell English SC', serif;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .sidebar-line {
+    font-size: .72rem;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .sidebar-line + .sidebar-line {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--parchment3);
+  }
+
+  /* ── Award ── */
+  .award-stamp {
+    display: block;
+    text-align: center;
+    font-family: 'IM Fell English SC', serif;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    background: rgba(0,0,0,.04);
+  }
+
+  /* ── Footer ── */
+  .paper-footer {
+    border-top: 3px double var(--ink);
+    margin-top: 0;
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: .58rem;
+    color: var(--ink-faint);
+    letter-spacing: .08em;
+    font-style: italic;
+  }
+
+  @media (max-width: 580px) {
+    .page { padding: 18px 16px 40px; }
+    .columns { grid-template-columns: 1fr; }
+    .col { border-right: none; border-bottom: 1px solid var(--ink); }
+    .photo-grid { grid-template-columns: 1fr; }
+    .masthead-bottom, .dateline { flex-direction: column; gap: 2px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <a href="index.html" class="back-link">Return to the Muggle World &rarr;</a>
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="masthead-top">Owl Post Edition &nbsp;&middot;&nbsp; Established 1743 &nbsp;&middot;&nbsp; Always Delivered</div>
+    <div class="masthead-title">The Daily Prophet</div>
+    <div class="masthead-rule"></div>
+    <div class="masthead-bottom">
+      <span>Vol. MMXXV &nbsp; No. 412</span>
+      <span>The Wizarding World&rsquo;s Finest News Source</span>
+      <span>Price: Three Knuts</span>
+    </div>
+  </div>
+
+  <!-- DATELINE -->
+  <div class="dateline">
+    <span>Hogsmeade, Scotland</span>
+    <span>Thursday, 1st May 2026</span>
+    <span>Minister: Kingsley Shacklebolt</span>
+  </div>
+
+  <!-- HEADLINE -->
+  <div class="headline-block">
+    <div class="hl-kicker">Breaking from the Muggle Realm</div>
+    <div class="hl-main">Young Wizard Claims Silver<br>at GDGHacks Tournament</div>
+    <div class="hl-rule"></div>
+    <div class="hl-deck">Mkareos Kzkoz, a 2nd-year computing apprentice at the University of Guelph, has stunned judges with a &ldquo;Cutting Edge UI&rdquo; spell the likes of which the Muggle tech world has never witnessed.</div>
+  </div>
+
+  <!-- BODY -->
+  <div class="columns">
+
+    <div class="col">
+
+      <div class="photo-frame">
+        <img src="photo.jpg" alt="Mkareos Kzkoz at GDGHacks" />
+        <div class="photo-caption">Mkareos Kzkoz, moments after the judges&rsquo; announcement &mdash; GDGHacks 2025, University of Guelph</div>
+      </div>
+
+      <p class="article-body drop-cap">In a remarkable display of enchantment and engineering, Mkareos Kzkoz &mdash; known in these halls as MK &mdash; emerged from the gruelling GDGHacks 2025 competition with the silver distinction of <strong>2nd Place</strong>, earning the coveted <em>Best Cutting Edge UI</em> award for his project RankedIn.</p>
+
+      <div class="pull-quote">
+        &ldquo;No AI APIs. Fully deterministic. 0&ndash;2500 scoring across 8 dimensions.&rdquo;
+      </div>
+
+      <p class="article-body">RankedIn, described by sources close to the Ministry as &ldquo;LinkedIn&rsquo;s Aura Score leaderboard,&rdquo; calculates a wizard&rsquo;s professional standing using a proprietary 8-dimensional formula &mdash; without so much as a whisper of AI sorcery. Sources confirm the judges were bewitched by the interface alone, praising its speed and clarity under tournament conditions.</p>
+
+      <p class="article-body">The competition, hosted by Google Developer Groups, drew some of the finest young enchanters from across the region. MK&rsquo;s team built and shipped the project within the span of a single moonrise-to-moonrise cycle, a feat our correspondents describe as &ldquo;borderline Dark Arts, but legal.&rdquo;</p>
+
+      <div class="photo-grid">
+        <div class="photo-frame">
+          <div class="photo-placeholder"><span class="ph-label">[ add gdg1.jpg ]</span></div>
+          <div class="photo-caption">The team assembles &mdash; GDGHacks 2025</div>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder"><span class="ph-label">[ add gdg2.jpg ]</span></div>
+          <div class="photo-caption">Presenting to the judges &mdash; GDGHacks 2025</div>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder"><span class="ph-label">[ add gdg3.jpg ]</span></div>
+          <div class="photo-caption">Receiving the silver citation &mdash; GDGHacks 2025</div>
+        </div>
+        <div class="photo-frame">
+          <div class="photo-placeholder"><span class="ph-label">[ add gdg4.jpg ]</span></div>
+          <div class="photo-caption">Celebration &mdash; GDGHacks 2025</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col">
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">The Silver Citation</div>
+        <div class="award-stamp">2nd Place &middot; GDGHacks 2025</div>
+        <div class="sidebar-line">Category: <em>Best Cutting Edge UI</em></div>
+        <div class="sidebar-line">Project: <em>RankedIn &mdash; LinkedIn Aura Score Engine</em></div>
+        <div class="sidebar-line">Stack: <em>Next.js &middot; TypeScript &middot; Supabase</em></div>
+        <div class="sidebar-line">Dimensions: <em>8</em> &nbsp;&middot;&nbsp; AI used: <em>None</em></div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">Also Building</div>
+        <div class="sidebar-line"><em>Skyn</em> &mdash; AI skincare app for iOS. Scans products, decodes ingredients, scores them against your skin profile.</div>
+        <div class="sidebar-line">Swift 5 &middot; SwiftUI &middot; iOS 17</div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">The Prophet Says</div>
+        <div class="sidebar-line">&ldquo;Young MK remains one to watch. The Ministry&rsquo;s Department of Muggle Computing has flagged his work as <em>disturbingly impressive for a 2nd year.</em>&rdquo;</div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="sidebar-title">Find Him</div>
+        <div class="sidebar-line"><a href="https://github.com/Mkareos" style="color:inherit; text-decoration:underline;">github.com/Mkareos</a></div>
+        <div class="sidebar-line"><a href="https://www.linkedin.com/in/mkareoskzkoz" style="color:inherit; text-decoration:underline;">linkedin.com/in/mkareoskzkoz</a></div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="paper-footer">
+    <span>The Daily Prophet &nbsp;&middot;&nbsp; Est. 1743</span>
+    <span>All owls to: Diagon Alley, London</span>
+    <span>Printed on genuine wizarding parchment</span>
+  </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
