@@ -1,291 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-    <link rel="icon" href="icon.png" type="image/png">
-
-<button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
-  <span class="material-symbols-outlined" id="themeIcon">light_mode</span>
-</button>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mkareos Kzkoz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-
-    <title>Mkareos Kzkoz</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="socials">
-  <a class="social-link" href="https://github.com/Mkareos" target="_blank" rel="noopener">
-    <i class="devicon-github-original"></i>
-    <span></span>
-  </a>
 
-  <a class="social-link" href="https://www.linkedin.com/in/mkareos-kzkoz-493048333/" target="_blank" rel="noopener">
-    <i class="devicon-linkedin-plain"></i>
-    <span></span>
-  </a>
-</div>
-<!-- Light mode = black logo -->
-<img class="logo logo-light" src="file (2).svg" alt="Logo">
+  <main>
 
-<!-- Dark mode = white logo -->
-<img class="logo logo-dark" src="snowwhiteahh-transparent.svg" alt="Logo">
-
-
-<h1>
-  Hi! I'm
-  <span class="name type" id="typedName" data-text="Mkareos."></span>
-</h1>
-
-<h2 class="hero">
-  <span class="hero-intro type" id="typedRole" data-text="Software Engineering Student,"></span><br>
-  <span class="hero-name type" id="typedLocation" data-text="Based in Ontario."></span>
-</h2>
-
-
-<a href="Untitled Resume - Resume (1).pdf" class="resume-btn" target="_blank">
-  View Rèsumè
-</a>
-<section class="projects">
-  <h3 class="projects-title"><strong>About Me</strong>
-    <p>I’m a first-year software engineering student eager to learn and grow through hands-on projects
-      <br>that challenge me and help me develop my technical skills.</p>
-  </h3>
-
-  <ul class="projects-list">
-    <li>
-      <span class="project-name"></span>
-    </li>
-
-    <li>
-      <span class="project-name"></span>
-    </li>
-  </ul>
-  <h4 class="projects-title"><strong>Projects</strong></h4>
-  <section class="projects">
-
-  <div class="projects-grid">
-
- <div class="projects-marquee">
-  <div class="projects-track">
-
-    <!-- SET A -->
-    <a href="https://panic-pick.vercel.app/" class="project-card">
-      <h4>Panic Pick</h4>
-      <p>Pixel-art memory game built with vanilla JavaScript.</p>
-      <div class="tech">
-        <span>HTML</span><span>CSS</span><span>JS</span>
+    <!-- TOP NAV -->
+    <nav>
+      <span class="nav-name">mk<span class="accent">.</span></span>
+      <div class="nav-links">
+        <a href="https://github.com/Mkareos" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/mkareoskzkoz" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="resume.pdf" target="_blank" class="nav-resume">Resume ↗</a>
+        <button class="lumos-btn" id="lumos" title="Lumos / Nox">☽</button>
       </div>
-    </a>
-    <a href="https://onlinegdb.com/YhtCvboy0" class="project-card">
-      <h4>BattleShip</h4>
-      <p>A strategic game built with Java.</p>
-      <div class="tech">
-        <span>Java</span>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Mkareos<br>Kzkoz</h1>
+        <div class="hero-meta">
+          <span class="mono dim">B.Computing · <img src="https://www.google.com/s2/favicons?domain=uoguelph.ca&sz=32" alt="UofG" class="inline-icon" />University of Guelph</span>
+          <span class="dot-sep">·</span>
+          <span class="available"><span class="pulse"></span>Open to internships</span>
+        </div>
       </div>
-    </a>
-     
-    <a href="#" class="project-card">
-      <h4>Image to PDF Converter</h4>
-      <p>A tool to convert images to PDF format. (Under Development)</p>
-      <div class="tech">
-        <span>Python</span>
+      <div class="hero-right">
+        <div class="photo-wrap">
+          <span class="hp-corner tl"></span>
+          <span class="hp-corner tr"></span>
+          <span class="hp-corner bl"></span>
+          <span class="hp-corner br"></span>
+          <img src="photo.jpg" alt="Mkareos Kzkoz" class="hero-photo" style="cursor:pointer;" onclick="window.location.href='daily-prophet.html'" />
+        </div>
       </div>
-    </a>
+    </section>
 
-    <a href="#" class="project-card">
-      <h4>Personal Portfolio</h4>
-      <p>Responsive personal site built from scratch.</p>
-      <div class="tech">
-        <span>HTML</span><span>CSS</span><span>JS</span>
+    <div class="divider"></div>
+
+    <!-- NOW -->
+    <section class="now-section">
+      <span class="label">Now</span>
+      <div class="now-grid">
+        <div class="now-item">
+          <span class="now-key mono">building</span>
+          <span class="now-val">Skyn, AI skincare app for iOS</span>
+        </div>
+        <div class="now-item">
+          <span class="now-key mono">studying</span>
+          <span class="now-val">2nd year software engineering</span>
+        </div>
+        <div class="now-item">
+          <span class="now-key mono">won</span>
+          <span class="now-val">2nd place · GDGHacks 2025 · Best Cutting Edge UI category</span>
+        </div>
       </div>
-    </a>
+    </section>
 
-    <a href="https://drive.google.com/drive/folders/1a5NzD8OQkBnOJMxHHbKooWa_p4fhMS8-?usp=sharing" class="project-card">
-      <h4>C Language Projects</h4>
-      <p>Projects built with C language.</p>
-      <div class="tech">
-        <span>C</span>
+    <div class="divider"></div>
+
+    <!-- PROJECTS -->
+    <section>
+      <span class="label">Projects</span>
+      <div class="project-list">
+
+        <a href="https://rankedinn.netlify.app/" target="_blank" rel="noopener" class="project-row">
+          <div class="project-main">
+            <span class="project-name">RankedIn <span class="award-badge">2nd · GDGHacks</span></span>
+            <span class="project-desc">LinkedIn "Aura Score" leaderboard. 0–2500 scoring engine across 8 dimensions. No AI APIs, fully deterministic.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span></div>
+            <span class="year mono">2025</span>
+          </div>
+        </a>
+
+        <a href="https://github.com/Mkareos" target="_blank" rel="noopener" class="project-row">
+          <div class="project-main">
+            <span class="project-name">Visual Mouse</span>
+            <span class="project-desc">Webcam-based hand gesture controller. Finger landmark tracking → mouse movement and clicks. No extra hardware.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>Python</span><span>OpenCV</span><span>MediaPipe</span></div>
+            <span class="year mono">2025</span>
+          </div>
+        </a>
+
+        <div class="project-row project-wip">
+          <div class="project-main">
+            <span class="project-name">Skyn <em class="wip">in progress</em></span>
+            <span class="project-desc">AI skincare app. Scan products, decode ingredients, score them against your skin profile, and build AM/PM routines with ongoing coaching.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>Swift 5</span><span>SwiftUI</span><span>iOS 17</span></div>
+            <span class="year mono">2026</span>
+          </div>
+        </div>
+
+        <a href="https://panic-pick.vercel.app/" target="_blank" rel="noopener" class="project-row">
+          <div class="project-main">
+            <span class="project-name">Panic Pick</span>
+            <span class="project-desc">Pixel-art memory card game. Pure vanilla JS. No libraries, no build step.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <span class="year mono">2024</span>
+          </div>
+        </a>
+
+        <a href="https://onlinegdb.com/YhtCvboy0" target="_blank" rel="noopener" class="project-row">
+          <div class="project-main">
+            <span class="project-name">BattleShip AI</span>
+            <span class="project-desc">Java Battleship with a probability-based hunt-and-target AI. Harder to beat than it looks.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>Java</span></div>
+            <span class="year mono">2024</span>
+          </div>
+        </a>
+
+        <a href="https://drive.google.com/drive/folders/1a5NzD8OQkBnOJMxHHbKooWa_p4fhMS8-?usp=sharing" target="_blank" rel="noopener" class="project-row">
+          <div class="project-main">
+            <span class="project-name">C Systems Projects</span>
+            <span class="project-desc">Coursework covering recursion, pointers, dynamic memory, file I/O, and core data structures in C.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>C</span></div>
+            <span class="year mono">2024</span>
+          </div>
+        </a>
+
       </div>
-    </a>
+    </section>
 
-    <!-- SET B (duplicate for seamless loop) -->
-    <a href="https://panic-pick.vercel.app/" class="project-card">
-      <h4>Panic Pick</h4>
-      <p>Pixel-art memory game built with vanilla JavaScript.</p>
-      <div class="tech">
-        <span>HTML</span><span>CSS</span><span>JS</span>
+    <div class="divider"></div>
+
+    <!-- STACK -->
+    <section>
+      <span class="label">Stack</span>
+      <div class="stack-rows">
+        <div class="stack-row">
+          <span class="stack-key mono">languages</span>
+          <span class="stack-val">JavaScript, TypeScript, Python, Java, C, C++, SQL, HTML, CSS</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-key mono">frameworks</span>
+          <span class="stack-val">React, Next.js, Tailwind, Node.js, OpenCV, MediaPipe</span>
+        </div>
+        <div class="stack-row">
+          <span class="stack-key mono">tools</span>
+          <span class="stack-val">Git, Docker, Vercel, Linux, Supabase</span>
+        </div>
       </div>
-    </a>
-    <a href="#" class="project-card">
-      <h4>Image to PDF Converter</h4>
-      <p>A tool to convert images to PDF format. (Under Development)</p>
-      <div class="tech">
-        <span>Python </span>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- CONTACT -->
+    <section>
+      <span class="label">Contact</span>
+      <p class="contact-desc">Open to internships, collabs, or just a good conversation. Reach out.</p>
+      <div class="contact-links">
+        <a href="#" class="email-obf contact-item" data-u="Mkareos" data-d="TamrahLabs.com">
+          <span class="contact-icon">✉</span>
+          <span class="email-display">Mkareos&#8203;[at]&#8203;TamrahLabs&#8203;.com</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mkareoskzkoz" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-icon">in</span>
+          <span>linkedin.com/in/mkareoskzkoz</span>
+        </a>
+        <a href="https://github.com/Mkareos" target="_blank" rel="noopener" class="contact-item">
+          <span class="contact-icon">gh</span>
+          <span>github.com/Mkareos</span>
+        </a>
       </div>
-    </a>
+    </section>
 
-     <a href="https://drive.google.com/drive/folders/1a5NzD8OQkBnOJMxHHbKooWa_p4fhMS8-?usp=sharing" class="project-card">
-      <h4>C Language Projects</h4>
-      <p>Projects built with C language.</p>
-      <div class="tech">
-        <span>C</span>
-      </div>
-    </a>
+    <div class="divider"></div>
 
-    <a href="#" class="project-card">
-      <h4>Personal Portfolio</h4>
-      <p>Responsive personal site built from scratch.</p>
-      <div class="tech">
-        <span>HTML</span><span>CSS</span><span>JS</span>
-      </div>
-    </a>
-    <a href="https://onlinegdb.com/YhtCvboy0" class="project-card">
-      <h4>BattleShip</h4>
-      <p>A strategic game built with Java.</p>
-      <div class="tech">
-        <span>Java</span>
-      </div>
-    </a>
+    <!-- FOOTER -->
+    <footer>
+      <span class="mono dim">© 2026 Mkareos Kzkoz</span>
+      <span class="mono dim" style="font-style:italic;">Mischief Managed.</span>
+    </footer>
 
-  </div>
-</div>
+  </main>
 
-  
-</section>
-<h4 class="skills"><strong>Skills & Tools</strong></h4>
-  <div class="marquee">
-    <div class="marquee-track">
-      <div class="pill"><i class="devicon-html5-plain colored"></i>HTML</div>
-      <div class="pill"><i class="devicon-css3-plain colored"></i>CSS</div>
-      <div class="pill"><i class="devicon-javascript-plain colored"></i>JavaScript</div>
-      <div class="pill"><i class="devicon-react-original colored"></i>React</div>
-      <div class="pill"><i class="devicon-c-plain colored"></i>C</div>
-      <div class="pill"><i class="devicon-nodejs-plain colored"></i>Node.js</div>
-      <div class="pill"><i class="devicon-github-original"></i>GitHub</div>
-      <div class="pill"><i class="devicon-vercel-original"></i>Vercel</div>
-      <div class="pill"><i class="devicon-linux-plain colored"></i>Linux</div>
-      <div class="pill"><i class="devicon-python-plain colored"></i>Python</div>
-      <div class="pill"><i class="devicon-java-plain colored"></i>Java</div>
-
-    
-      <div class="pill"><i class="devicon-html5-plain colored"></i>HTML</div>
-      <div class="pill"><i class="devicon-css3-plain colored"></i>CSS</div>
-      <div class="pill"><i class="devicon-javascript-plain colored"></i>JavaScript</div>
-      <div class="pill"><i class="devicon-react-original colored"></i>React</div>
-      <div class="pill"><i class="devicon-c-plain colored"></i>C</div>
-      <div class="pill"><i class="devicon-nodejs-plain colored"></i>Node.js</div>
-      <div class="pill"><i class="devicon-github-original"></i>GitHub</div>
-      <div class="pill"><i class="devicon-vercel-original"></i>Vercel</div>
-      <div class="pill"><i class="devicon-linux-plain colored"></i>Linux</div>
-      <div class="pill"><i class="devicon-python-plain colored"></i>Python</div>
-      <div class="pill"><i class="devicon-java-plain colored"></i>Java</div>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <p>© 2025<span id="year"></span> Mkareos Kzkoz. All rights reserved.</p>
-</footer>
-
-<script>
-    const toggle = document.getElementById("themeToggle");
-    const icon = document.getElementById("themeIcon");
-
-    toggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-
-      icon.textContent = document.body.classList.contains("dark")
-        ? "light_mode"
-        : "dark_mode";
-    });
-
-
-  let lastScrollY = window.scrollY;
-const logos = document.querySelectorAll(".logo");
-const themeBtn = document.getElementById("themeToggle");
-
-window.addEventListener("scroll", () => {
-  const scrollingDown = window.scrollY > lastScrollY && window.scrollY > 20;
-
-  if (scrollingDown) {
-    logos.forEach(l => l.classList.add("hide-on-scroll"));
-    themeBtn.classList.add("hide-on-scroll");
-  } else {
-    logos.forEach(l => l.classList.remove("hide-on-scroll"));
-    themeBtn.classList.remove("hide-on-scroll");
-  }
-
-  lastScrollY = window.scrollY;
-});
-
-
-  function typeText(el, speed = 70, callback) {
-  const text = el.dataset.text;
-  let i = 0;
-  el.textContent = "";
-
-  function type() {
-    if (i < text.length) {
-      el.textContent += text[i++];
-      setTimeout(type, speed);
-    } else {
-      el.style.borderRight = "0"; 
-      if (callback) callback();
-    }
-  }
-  type();
-}
-
-window.addEventListener("load", () => {
-  const name = document.getElementById("typedName");
-  const role = document.getElementById("typedRole");
-  const location = document.getElementById("typedLocation");
-
-  typeText(name, 110, () => {
-    typeText(role, 70, () => {
-      typeText(location, 70);
-    });
-  });
-
-  const skills = document.getElementById("typedSkills");
-  if (skills) {
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          typeText(skills, 60);
-          obs.disconnect(); 
-        }
-      });
-    }, { threshold: 0.35 });
-
-    obs.observe(skills);
-  }
-});
-
-const topRightControls = document.querySelector(".top-right-controls");
-
-window.addEventListener("scroll", () => {
-  const scrollingDown = window.scrollY > lastScrollY && window.scrollY > 60;
-
-  if (scrollingDown) {
-    if (topRightControls) topRightControls.classList.add("hidden");
-  } else {
-    if (topRightControls) topRightControls.classList.remove("hidden");
-  }
-
-  lastScrollY = window.scrollY;
-});
-
-
-
-  </script>
-
+<div id="nox-bg" aria-hidden="true"></div>
+<script src="script.js"></script>
 </body>
 </html>
