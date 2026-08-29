@@ -13,17 +13,24 @@
   --font:     'Inter', system-ui, sans-serif;
   --mono:     'JetBrains Mono', monospace;
   --max:      700px;
+  --glow-a:   rgba(184,92,56,.07);
+  --glow-b:   rgba(201,173,122,.11);
 }
 
 /* ── Reset ─────────────────────────────────────── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { font-size: 15px; }
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(900px 520px at 12% -8%, var(--glow-a), transparent 60%),
+    radial-gradient(1100px 620px at 100% 4%, var(--glow-b), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   font-family: var(--font);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; }
@@ -98,6 +105,7 @@ nav {
 /* ── HERO ──────────────────────────────────────── */
 .hero {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   gap: 40px;
@@ -158,6 +166,26 @@ h1 {
   position: relative;
   top: -1px;
 }
+
+/* ── Hero quick-contact row ─────────────────────── */
+.hero-contact {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: .72rem;
+}
+.hero-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  transition: color .15s;
+}
+.hero-contact a:hover { color: var(--accent); }
+.hero-contact .hcl-icon { color: var(--dim); font-style: normal; }
+.email-obf { cursor: pointer; }
 
 .email-link {
   font-family: var(--mono);
@@ -290,14 +318,30 @@ section { display: flex; flex-direction: column; }
   padding: 15px 10px;
 }
 .project-row:first-child { border-top: 1px solid var(--border); }
-a.project-row:hover {
+a.project-row:hover,
+.project-row.linkable:hover {
   background: var(--bg2);
   border-radius: 6px;
   border-color: transparent;
 }
 a.project-row:hover + .project-row,
-a.project-row:hover + .project-wip { border-top-color: transparent; }
+a.project-row:hover + .project-wip,
+.project-row.linkable:hover + .project-row,
+.project-row.linkable:hover + .project-wip { border-top-color: transparent; }
 .project-wip { opacity: .5; cursor: default; }
+
+/* Row with a stretched primary link + a separate secondary link (e.g. repo) */
+.project-row.linkable { position: relative; cursor: pointer; }
+.stretch-link { color: inherit; }
+.stretch-link::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.project-row.linkable .project-right { position: relative; z-index: 2; }
+.repo-link {
+  font-family: var(--mono);
+  font-size: .62rem;
+  color: var(--muted);
+  transition: color .15s;
+}
+.repo-link:hover { color: var(--accent); }
 
 .project-main {
   display: flex;
@@ -476,6 +520,8 @@ body.nox {
   --border:   #2e2820;
   --tag-bg:   #1c1912;
   --tag-text: #7a6d5e;
+  --glow-a:   rgba(201,173,122,.06);
+  --glow-b:   rgba(96,74,168,.09);
 }
 body.nox .photo-wrap {
   background: #2a2318;
@@ -487,40 +533,6 @@ body.nox .photo-wrap:hover {
 }
 body.nox .hp-corner { border-color: #6b5a30; }
 body.nox .lumos-btn { color: #c9ad7a; }
-
-/* ── Nox background: night sky + dementors ─────────── */
-#nox-bg {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-  background: #0e0e0e;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
-body.nox #nox-bg { display: block; opacity: 1; }
-
-.nox-star {
-  position: absolute;
-  border-radius: 50%;
-  background: #fff;
-  animation: star-twinkle var(--dur, 2.5s) ease-in-out var(--delay, 0s) infinite alternate;
-}
-@keyframes star-twinkle {
-  from { opacity: .1; transform: scale(.8); }
-  to   { opacity: .9; transform: scale(1.2); }
-}
-
-.nox-dementor {
-  position: absolute;
-  pointer-events: none;
-  filter: drop-shadow(0 0 14px rgba(80,50,180,.3)) brightness(0.82);
-  mix-blend-mode: multiply;
-  will-change: transform;
-  object-fit: contain;
-}
 
 /* ── Accessibility ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {

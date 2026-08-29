@@ -1,24 +1,12 @@
-// ── Nox background: night sky ───────────────────────────
-
-function buildNoxBg() {
-  const bg = document.getElementById('nox-bg');
-  if (!bg || bg.dataset.built) return;
-  bg.dataset.built = '1';
-
-}
-
 // ── Lumos / Nox dark mode ───────────────────────────────
 const lumos = document.getElementById('lumos');
 if (lumos) {
   if (localStorage.getItem('nox') === '1') {
     document.body.classList.add('nox');
-    buildNoxBg();
   }
   lumos.addEventListener('click', () => {
     document.body.classList.toggle('nox');
-    const isNox = document.body.classList.contains('nox');
-    localStorage.setItem('nox', isNox ? '1' : '0');
-    if (isNox) buildNoxBg();
+    localStorage.setItem('nox', document.body.classList.contains('nox') ? '1' : '0');
   });
 }
 
@@ -105,12 +93,11 @@ if (lumos) {
   });
 })();
 
-// Email obfuscation — assembled at click time, never in plain HTML
+// Email obfuscation — real address is assembled only on click, never rendered
+// into the DOM or the HTML source, so scrapers only ever see "mkareos [at] …".
 document.querySelectorAll('.email-obf').forEach(el => {
-  const addr = el.dataset.u + '@' + el.dataset.d;
-  el.querySelector('.email-display').textContent = addr;
   el.addEventListener('click', e => {
     e.preventDefault();
-    window.location.href = 'mailto:' + addr;
+    window.location.href = 'mailto:' + el.dataset.u + '@' + el.dataset.d;
   });
 });
