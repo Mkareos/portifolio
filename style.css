@@ -276,6 +276,15 @@ h1 {
   border-radius: 4px;
 }
 
+/* ── ABOUT section ─────────────────────────────── */
+.about-section { display: flex; flex-direction: column; }
+.about-body p {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.about-body p + p { margin-top: 12px; }
+
 /* ── NOW section ───────────────────────────────── */
 .now-section { display: flex; flex-direction: column; }
 .now-grid {
@@ -483,6 +492,10 @@ main > *:nth-child(7)  { animation-delay: .29s; }
 main > *:nth-child(8)  { animation-delay: .33s; }
 main > *:nth-child(9)  { animation-delay: .37s; }
 main > *:nth-child(10) { animation-delay: .41s; }
+main > *:nth-child(11) { animation-delay: .45s; }
+main > *:nth-child(12) { animation-delay: .49s; }
+main > *:nth-child(13) { animation-delay: .53s; }
+main > *:nth-child(14) { animation-delay: .57s; }
 
 /* ── Responsive ────────────────────────────────── */
 @media (max-width: 520px) {

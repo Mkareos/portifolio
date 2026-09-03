@@ -93,7 +93,7 @@ if (lumos) {
   });
 })();
 
-// Email obfuscation — real address is assembled only on click, never rendered
+// Email obfuscation: real address is assembled only on click, never rendered
 // into the DOM or the HTML source, so scrapers only ever see "mkareos [at] …".
 document.querySelectorAll('.email-obf').forEach(el => {
   el.addEventListener('click', e => {

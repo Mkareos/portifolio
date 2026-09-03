@@ -53,13 +53,24 @@
 
     <div class="divider"></div>
 
+    <!-- ABOUT -->
+    <section class="about-section">
+      <span class="label">About</span>
+      <div class="about-body">
+        <p>I'm a second-year Software Engineering student at the University of Guelph. I build across the whole stack, from C and OpenSSL down low to React and TypeScript up top, and I care most about the parts people tend to gloss over: retrieval quality, real benchmark numbers, tamper tests, the failure cases.</p>
+        <p>Recently that's looked like an explainable RAG search engine, a post-quantum cryptography lab, and a deterministic scoring engine that took 2nd at GDGHacks. I'm open to software internships where I can work on hard problems alongside people who've been at it longer.</p>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- NOW -->
     <section class="now-section">
       <span class="label">Now</span>
       <div class="now-grid">
         <div class="now-item">
           <span class="now-key mono">building</span>
-          <span class="now-val">Verivance, an explainable RAG search engine</span>
+          <span class="now-val">Lattix, a post-quantum cryptography migration lab</span>
         </div>
         <div class="now-item">
           <span class="now-key mono">studying</span>
@@ -67,7 +78,7 @@
         </div>
         <div class="now-item">
           <span class="now-key mono">won</span>
-          <span class="now-val">2nd place · GDGHacks 2025 · Best Cutting Edge UI category</span>
+          <span class="now-val">2nd place · GDGHacks 2026 · Best Cutting Edge UI category</span>
         </div>
       </div>
     </section>
@@ -82,7 +93,7 @@
         <div class="project-row linkable">
           <div class="project-main">
             <span class="project-name"><a class="stretch-link" href="https://verivance-ai-web.vercel.app/" target="_blank" rel="noopener">Verivance</a></span>
-            <span class="project-desc">Explainable RAG search engine. Chunks and embeds documents into Pinecone, retrieves and ranks the top evidence by semantic search, then Gemini writes a grounded answer with every source shown.</span>
+            <span class="project-desc">Explainable RAG search engine. Chunks and embeds documents into Pinecone (281-chunk demo corpus), pulls the top 5 semantic matches per query, ranks them, and passes them to Gemini as grounding. Every answer ships with source citations and similarity scores. FastAPI backend, Next.js frontend on Vercel.</span>
           </div>
           <div class="project-right">
             <div class="tags"><span>Next.js</span><span>FastAPI</span><span>Pinecone</span></div>
@@ -93,59 +104,50 @@
 
         <div class="project-row linkable">
           <div class="project-main">
+            <span class="project-name"><a class="stretch-link" href="https://github.com/Elias-Kampey/Lattix" target="_blank" rel="noopener">Lattix</a></span>
+            <span class="project-desc">Interactive lab for comparing classical and post-quantum cryptography side by side. C/OpenSSL backend wrapping ML-KEM-768, ML-DSA-65, and AES-256-GCM (key generation, encapsulation/decapsulation, sign/verify, authenticated encryption) with timing benchmarks and tamper tests, exposed to a React frontend through a Node/TypeScript API. Built the C crypto layer and the API bridge.</span>
+          </div>
+          <div class="project-right">
+            <div class="tags"><span>C</span><span>OpenSSL</span><span>ML-KEM</span></div>
+            <span class="year mono">2026</span>
+            <a class="repo-link" href="https://github.com/Elias-Kampey/Lattix" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+
+        <div class="project-row linkable">
+          <div class="project-main">
             <span class="project-name"><a class="stretch-link" href="https://rankedinn.netlify.app/" target="_blank" rel="noopener">RankedIn</a> <span class="award-badge">2nd · GDGHacks</span></span>
-            <span class="project-desc">LinkedIn "Aura Score" leaderboard. 0–2500 scoring engine across 8 dimensions. No AI APIs, fully deterministic.</span>
+            <span class="project-desc">Turns LinkedIn profiles into an explainable 0–2500 "Aura Score" across 8 weighted dimensions on a live public leaderboard. Custom deterministic scoring engine (no AI), plus a 3-tier scraping fallback (fresh scraper, enrichment API, raw HTML parsing) that keeps data flowing past anti-scraping defenses.</span>
           </div>
           <div class="project-right">
             <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span></div>
-            <span class="year mono">2025</span>
+            <span class="year mono">2026</span>
             <a class="repo-link" href="https://github.com/marghazal/rankedIn" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
         </div>
 
-        <a href="https://github.com/Mkareos" target="_blank" rel="noopener" class="project-row">
+        <div class="project-row">
           <div class="project-main">
             <span class="project-name">Visual Mouse</span>
-            <span class="project-desc">Webcam-based hand gesture controller. Finger landmark tracking → mouse movement and clicks. No extra hardware.</span>
+            <span class="project-desc">Hands-free cursor control from a webcam. MediaPipe hand-landmark detection and OpenCV frame processing drive OS-level mouse actions through PyAutoGUI, with click and move logic derived from relative distances between finger landmarks. Gesture recognition is kept separate from cursor control so the interaction stays responsive and tunable.</span>
           </div>
           <div class="project-right">
             <div class="tags"><span>Python</span><span>OpenCV</span><span>MediaPipe</span></div>
-            <span class="year mono">2025</span>
+            <span class="year mono">2026</span>
           </div>
-        </a>
+        </div>
 
-        <a href="https://panic-pick.vercel.app/" target="_blank" rel="noopener" class="project-row">
+        <div class="project-row linkable">
           <div class="project-main">
-            <span class="project-name">Panic Pick</span>
-            <span class="project-desc">Pixel-art memory card game. Pure vanilla JS. No libraries, no build step.</span>
+            <span class="project-name"><a class="stretch-link" href="https://panic-pick.vercel.app/" target="_blank" rel="noopener">Panic Pick</a></span>
+            <span class="project-desc">Responsive pixel-art browser game in vanilla JavaScript, HTML, and CSS. Animated day/night themes, custom UI transitions, crisp pixel rendering, and interactive menus, with the UI and game logic split into reusable components so features drop in without a framework or build step.</span>
           </div>
           <div class="project-right">
             <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-            <span class="year mono">2024</span>
+            <span class="year mono">2026</span>
+            <a class="repo-link" href="https://github.com/Mkareos/panic-pick" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-        </a>
-
-        <a href="https://onlinegdb.com/YhtCvboy0" target="_blank" rel="noopener" class="project-row">
-          <div class="project-main">
-            <span class="project-name">BattleShip AI</span>
-            <span class="project-desc">Java Battleship with a probability-based hunt-and-target AI. Harder to beat than it looks.</span>
-          </div>
-          <div class="project-right">
-            <div class="tags"><span>Java</span></div>
-            <span class="year mono">2024</span>
-          </div>
-        </a>
-
-        <a href="https://drive.google.com/drive/folders/1a5NzD8OQkBnOJMxHHbKooWa_p4fhMS8-?usp=sharing" target="_blank" rel="noopener" class="project-row">
-          <div class="project-main">
-            <span class="project-name">C Systems Projects</span>
-            <span class="project-desc">Coursework covering recursion, pointers, dynamic memory, file I/O, and core data structures in C.</span>
-          </div>
-          <div class="project-right">
-            <div class="tags"><span>C</span></div>
-            <span class="year mono">2024</span>
-          </div>
-        </a>
+        </div>
 
       </div>
     </section>
@@ -162,11 +164,11 @@
         </div>
         <div class="stack-row">
           <span class="stack-key mono">frameworks</span>
-          <span class="stack-val">React, Next.js, Node.js, FastAPI, Tailwind, Framer Motion, PyTorch, Pandas, OpenCV, MediaPipe, PyAutoGUI</span>
+          <span class="stack-val">React, Next.js, Node.js, Express, FastAPI, Tailwind, Framer Motion, PyTorch, Pandas, OpenCV, MediaPipe, PyAutoGUI</span>
         </div>
         <div class="stack-row">
           <span class="stack-key mono">tools</span>
-          <span class="stack-val">Git, GitHub, Docker, Linux, Vercel, VS Code, npm/pip, LaTeX, Figma, Pinecone, PostgreSQL, Supabase</span>
+          <span class="stack-val">Git, GitHub, CMake, OpenSSL, Vite, Linux, Vercel, VS Code, npm/pip, LaTeX, Figma, Pinecone, PostgreSQL, Supabase</span>
         </div>
       </div>
     </section>
